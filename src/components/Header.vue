@@ -218,10 +218,13 @@ const getInTouchClassNames = computed(() => {
     }
 
     &-image {
-      width: 36px;
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
 
       @include mixins.mq("md") {
-        width: 40px;
+        width: 64px;
+        height: 64px;
       }
     }
 

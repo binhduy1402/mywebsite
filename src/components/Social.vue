@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import Github from "./icons/Github.vue";
 import Linkedin from "./icons/Linkedin.vue";
 import Instagram from "./icons/Instagram.vue";
 import Mail from "./icons/Mail.vue";
-import X from "./icons/X.vue";
+import Facebook from "./icons/Facebook.vue";
+import Zalo from "./icons/Zalo.vue";
+import Telegram from "./icons/Telegram.vue";
+import Discord from "./icons/Discord.vue";
 import Link from "./Link.vue";
 import { t } from "../i18n/utils/translate";
 import ButtonRound from "./ButtonRound.vue";
@@ -14,16 +16,18 @@ const props = defineProps<{
   variant?: "theme" | "background";
 }>();
 
-// map icon names to components
 const icons = {
   mail: Mail,
-  github: Github,
+  facebook: Facebook,
+  zalo: Zalo,
   linkedin: Linkedin,
-  x: X,
+  telegram: Telegram,
   instagram: Instagram,
+  discord: Discord,
 } as const;
 
-const getAriaLabel = (name: string) => `${t("go-to")} ${name.charAt(0).toUpperCase() + name.slice(1)}`;
+const getAriaLabel = (name: string) =>
+  `${t("go-to")} ${name.charAt(0).toUpperCase() + name.slice(1)}`;
 </script>
 
 <template>
@@ -43,7 +47,11 @@ const getAriaLabel = (name: string) => `${t("go-to")} ${name.charAt(0).toUpperCa
         class="children-unclickable"
         data-hoversound="hover"
       >
-        <component :is="icons[item.name]" :aria-label="getAriaLabel(item.name)" external />
+        <component
+          :is="icons[item.name]"
+          :aria-label="getAriaLabel(item.name)"
+          external
+        />
       </ButtonRound>
     </Link>
   </div>

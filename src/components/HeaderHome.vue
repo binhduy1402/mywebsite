@@ -15,9 +15,10 @@ const handleLinkClick = (link: string) => {
 type ActiveLink = "about" | "projects" | "contact";
 const activeLink = ref<ActiveLink | null>(null);
 const sections: ActiveLink[] = ["about", "projects", "contact"];
+
 const ariaLabels = {
   about: t("about"),
-  projects: t("projects"),
+  projects: t("experience"),
   contact: t("contact"),
 };
 
@@ -86,7 +87,7 @@ onMounted(() => {
         data-sound="click"
         data-hoversound="hover"
       >
-        {{ t(section) }}
+        {{ section === "projects" ? t("experience") : t(section) }}
       </HeaderLink>
     </div>
   </div>

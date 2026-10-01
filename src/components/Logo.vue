@@ -1,11 +1,13 @@
 <template>
-  <svg class="logo-svg" viewBox="0 0 56 61" xmlns="http://www.w3.org/2000/svg" height="60" width="56">
-    <use href="#logo-path" />
-  </svg>
+  <img class="logo-image" :src="'/meta/logo_BD.png'" alt="Bình Duy" />
 </template>
 
 <style scoped lang="scss">
-.logo-svg {
-  fill: var(--icon-color);
+.logo-image {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  display: block;
+  filter: brightness(1.25) contrast(1.1);
 }
 </style>

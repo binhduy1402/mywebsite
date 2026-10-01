@@ -1,6 +1,6 @@
-import thumbnailSystemControlRoom from "../../../assets/thumbnails/cubewar.webp";
-import thumbnailGift from "../../../assets/thumbnails/quibbo.webp";
-import thumbnailAI from "../../../assets/thumbnails/particles.webp";
+import thumbnailSystemControlRoom from "../../../assets/thumbnails/system-control-room.png";
+import thumbnailGift from "../../../assets/thumbnails/gift.png";
+import thumbnailAI from "../../../assets/thumbnails/chat-AI.png";
 
 import type { ProjectPreview } from "../../types";
 

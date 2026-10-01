@@ -5,6 +5,7 @@
   "back-to-home": "Back to home",
   "original-concept-by": "Originally created by",
   "contact": "Contact",
+  "experience": "Work",
   "description": "Description",
   "disable-sounds": "Disable sounds",
   "enable-sounds": "Enable sounds",
@@ -28,5 +29,6 @@
   "version": "Version",
   "view-project": "View project",
   "hero-name": "Bình<br />Duy",
-  "hero-tagline": "System Engineer focused on IT infrastructure, networking, and technical support."
+  "hero-tagline": "System Engineer focused on IT infrastructure, networking, and technical support.",
+  "what-i-have": "What I Have"
 }

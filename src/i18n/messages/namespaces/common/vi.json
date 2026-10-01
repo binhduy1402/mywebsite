@@ -5,6 +5,7 @@
   "back-to-home": "Về trang chủ",
   "original-concept-by": "Ý tưởng gốc được thực hiện bởi",
   "contact": "Liên hệ",
+  "experience": "Kinh nghiệm",
   "description": "Mô tả",
   "disable-sounds": "Tắt âm thanh",
   "enable-sounds": "Bật âm thanh",
@@ -28,5 +29,6 @@
   "version": "Phiên bản",
   "view-project": "Xem dự án",
   "hero-name": "Bình<br />Duy",
-  "hero-tagline": "System Engineer tập trung vào hạ tầng CNTT, mạng máy tính và hỗ trợ kỹ thuật."
+  "hero-tagline": "System Engineer tập trung vào hạ tầng CNTT, mạng máy tính và hỗ trợ kỹ thuật.",
+  "what-i-have": "Tôi có những gì?"
 }
