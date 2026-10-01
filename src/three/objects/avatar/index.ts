@@ -64,6 +64,9 @@ const getMaterial = (name: string): Material | null => {
     transparent: true,
     uniforms: {
       uMatcap: { value: tex },
+      uTint: { value: new Vector3(1, 1, 1) },
+      uShoeTint: { value: new Vector3(1, 1, 1) },
+      uShoeThreshold: { value: 3.4 },
       ...uniforms,
     },
   });
@@ -71,11 +74,14 @@ const getMaterial = (name: string): Material | null => {
 
 const assignMatcap = (child: Mesh): boolean => {
   let tex: Texture | null = null;
+  let tint = new Vector3(1, 1, 1);
 
   if (child.name === "black") {
-    tex = resources.items["matcap-black"];
+    tex = resources.items["matcap-white"];
+    tint = new Vector3(1, 1, 1);
   } else if (child.name === "gray") {
     tex = resources.items["matcap-gray"];
+    tint = new Vector3(0.55, 0.65, 0.35);
   } else if (child.name === "skin") {
     tex = resources.items["matcap-skin"];
   } else if (child.name === "white") {
@@ -85,6 +91,7 @@ const assignMatcap = (child: Mesh): boolean => {
   if (tex) {
     tex.colorSpace = LinearSRGBColorSpace;
     child.userData.matcap = tex;
+    child.userData.tint = tint;
     return true;
   }
 
@@ -107,9 +114,11 @@ const setupMesh = () => {
       child.renderOrder = child.name === "face" ? 25 : 24;
 
       const hasMatcap = assignMatcap(child);
+
       if (hasMatcap) {
         child.onBeforeRender = () => {
           child.material.uniforms.uMatcap.value = child.userData.matcap;
+          child.material.uniforms.uTint.value.copy(child.userData.tint);
         };
       }
     }
