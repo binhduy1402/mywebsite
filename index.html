@@ -53,11 +53,34 @@
       <svg class="preloader-svg" viewBox="0 0 56 61" xmlns="http://www.w3.org/2000/svg">
         <mask id="preloader-mask">
           <rect fill="black" height="61" width="61"></rect>
-          <rect fill="white" height="61" width="61" class="preloader-rect" style="transform: scaleY(0)"></rect>
+          <rect
+            fill="white"
+            height="61"
+            width="61"
+            class="preloader-rect"
+            style="transform: scaleY(0)"
+          ></rect>
         </mask>
 
-        <use href="#logo-path" class="preloader-path" opacity="0.3"></use>
-        <use href="#logo-path" class="preloader-path" mask="url(#preloader-mask)"></use>
+        <image
+          href="/meta/logo_BD.png"
+          x="0"
+          y="0"
+          width="56"
+          height="61"
+          preserveAspectRatio="xMidYMid meet"
+          opacity="0.3"
+        />
+
+        <image
+          href="/meta/logo_BD.png"
+          x="0"
+          y="0"
+          width="56"
+          height="61"
+          preserveAspectRatio="xMidYMid meet"
+          mask="url(#preloader-mask)"
+        />
       </svg>
     </div>
     <script type="module" src="./src/main.ts"></script>
