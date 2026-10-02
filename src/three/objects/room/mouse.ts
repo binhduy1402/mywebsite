@@ -36,21 +36,21 @@ const init = (_mesh: Mesh) => {
 
 const tick = () => {
   if (!mesh || !enabled.value) return;
-
   if (sceneWeights.hero < 0.95) return;
 
   const bone = avatar.getRightHandBone();
-  if (!bone) return;
+  if (bone === null) return;
 
   bone.getWorldPosition(currentPos);
   room.group.worldToLocal(currentPos);
 
   if (currentPos.y > Y_BOUND) return;
+
   if (currentPos.x < BOUNDS.x.min || currentPos.x > BOUNDS.x.max) return;
+
   if (currentPos.z < BOUNDS.z.min || currentPos.z > BOUNDS.z.max) return;
 
   mesh.position.copy(currentPos);
-
   mesh.position.y = initialPos.y;
   mesh.position.z -= 0.15;
 };

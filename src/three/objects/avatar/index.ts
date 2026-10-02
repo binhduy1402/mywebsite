@@ -176,7 +176,7 @@ export const avatar = {
   init,
   destroy,
   getMesh: () => mesh,
-  getRightHandBone: () => rightHandBone,
+  getRightHandBone: (): Bone | null => rightHandBone,
   tIdleIntensity,
   waypointsPosition,
   waypointsRotation,
