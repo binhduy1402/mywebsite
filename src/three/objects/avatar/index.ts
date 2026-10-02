@@ -131,11 +131,9 @@ const setupMesh = () => {
 
   mesh.rotation.z = 0;
 
-  transform.add(mesh);
+transform.add(mesh);
 
-  rightHandBone = mesh.getObjectByName("bone-right-hand") as Bone;
-
-  scene.instance.add(transform);
+scene.instance.add(transform);
 };
 
 const tick = () => {

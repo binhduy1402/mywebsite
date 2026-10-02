@@ -195,12 +195,12 @@ onBeforeUnmount(() => {
 <style scoped lang="scss">
 .footer {
   /* Đổi màu: sửa các biến này là đổi toàn bộ footer */
-  --footer-bg: #1d1814;
-  --footer-text: #f5ede3;
-  --footer-text-muted: rgba(245, 237, 227, 0.6);
-  --footer-line: rgba(245, 237, 227, 0.28);
-  --footer-accent: #ff7a00;
-  --footer-accent-soft: #ffb15c;
+  --footer-bg: #0b1220;
+  --footer-text: #eef2fa;
+  --footer-text-muted: rgba(238, 242, 250, 0.6);
+  --footer-line: rgba(238, 242, 250, 0.28);
+  --footer-accent: #2f5bff;
+  --footer-accent-soft: #7f9bff;
 
   background: var(--footer-bg);
   color: var(--footer-text);
@@ -260,7 +260,7 @@ onBeforeUnmount(() => {
       height: 300px;
       left: 40%;
       bottom: -240px;
-      background: radial-gradient(circle, #ff4d2e, transparent 70%);
+      background: radial-gradient(circle, #5b7bff, transparent 70%);
       opacity: 0.2;
       animation: aurora-c 15s ease-in-out infinite alternate;
     }
@@ -272,7 +272,7 @@ onBeforeUnmount(() => {
     inset: 0;
     background: radial-gradient(
       320px circle at var(--sx, 50%) var(--sy, 130%),
-      rgba(255, 122, 0, 0.16),
+      rgba(47, 91, 255, 0.16),
       transparent 65%
     );
   }
@@ -291,9 +291,9 @@ onBeforeUnmount(() => {
     color: transparent;
     background: linear-gradient(
         100deg,
-        rgba(245, 237, 227, 0.05) 35%,
-        rgba(255, 150, 40, 0.4) 50%,
-        rgba(245, 237, 227, 0.05) 65%
+        rgba(238, 242, 250, 0.05) 35%,
+        rgba(127, 155, 255, 0.4) 50%,
+        rgba(238, 242, 250, 0.05) 65%
       )
       0 0 / 250% 100%;
     -webkit-background-clip: text;
@@ -439,7 +439,7 @@ onBeforeUnmount(() => {
     height: 1px;
     background:
       linear-gradient(90deg, transparent, var(--footer-accent), transparent) -200px 0 / 200px 100% no-repeat,
-      rgba(245, 237, 227, 0.1);
+      rgba(238, 242, 250, 0.1);
     animation: line-shine 5s ease-in-out infinite;
   }
 

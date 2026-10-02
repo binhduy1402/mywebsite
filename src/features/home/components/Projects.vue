@@ -259,8 +259,8 @@ onBeforeUnmount(() => io?.disconnect());
 </template>
 
 <style scoped lang="scss">
-$accent: #ff8500;
-$line: rgba(20, 18, 16, 0.14);
+$accent: #2f5bff;
+$line: rgba(15, 27, 51, 0.14);
 $ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
 
 .projects {
@@ -280,9 +280,9 @@ $ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
   /* nền kem + 2 vệt cam rất nhạt + lưới chấm (toàn bộ là gradient tĩnh) */
   background-color: var(--color-beige-400);
   background-image:
-    radial-gradient(ellipse 34% 26% at 8% 48%, rgba(255, 133, 0, 0.11), transparent 70%),
-    radial-gradient(ellipse 34% 26% at 92% 62%, rgba(255, 133, 0, 0.09), transparent 70%),
-    radial-gradient(rgba(20, 18, 16, 0.1) 1px, transparent 1.4px);
+    radial-gradient(ellipse 34% 26% at 8% 48%, rgba(47, 91, 255, 0.11), transparent 70%),
+    radial-gradient(ellipse 34% 26% at 92% 62%, rgba(47, 91, 255, 0.09), transparent 70%),
+    radial-gradient(rgba(15, 27, 51, 0.1) 1px, transparent 1.4px);
   background-size: 100% 100%, 100% 100%, 26px 26px;
 
   @include mixins.mq("md") {
@@ -502,7 +502,7 @@ $ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
     right: 0;
     top: 0;
 
-    border-top: 1px dashed rgba(255, 133, 0, 0.65);
+    border-top: 1px dashed rgba(47, 91, 255, 0.65);
     transform-origin: left center;
   }
 
@@ -516,7 +516,7 @@ $ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
 
     border-radius: 50%;
     background: $accent;
-    box-shadow: 0 0 0 4px rgba(255, 133, 0, 0.18);
+    box-shadow: 0 0 0 4px rgba(47, 91, 255, 0.18);
 
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
@@ -555,7 +555,7 @@ $ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
   .note-chips span {
-    border-color: rgba(255, 133, 0, 0.45);
+    border-color: rgba(47, 91, 255, 0.45);
   }
 }
 
@@ -627,7 +627,7 @@ $ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
       color 0.2s ease;
 
     &:hover {
-      border-color: rgba(255, 133, 0, 0.6);
+      border-color: rgba(47, 91, 255, 0.6);
       color: $accent;
     }
   }
@@ -688,10 +688,10 @@ $ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
 
       .pcard-frame {
         animation-play-state: paused;
-        border-color: rgba(255, 133, 0, 0.6);
+        border-color: rgba(47, 91, 255, 0.6);
         box-shadow:
           inset 0 1px 0 rgba(255, 255, 255, 0.9),
-          0 20px 44px rgba(255, 133, 0, 0.16);
+          0 20px 44px rgba(47, 91, 255, 0.16);
       }
 
       .pcard-media img {
@@ -725,13 +725,13 @@ $ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
 
   padding: 8px;
 
-  border: 1px solid rgba(20, 18, 16, 0.09);
+  border: 1px solid rgba(15, 27, 51, 0.09);
   border-radius: 22px;
 
   background: rgba(255, 255, 255, 0.55);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.9),
-    0 10px 28px rgba(70, 45, 20, 0.08);
+    0 10px 28px rgba(15, 27, 51, 0.08);
 
   /* nghiêng nhẹ theo con trỏ (JS chỉ set --rx / --ry khi đang hover) */
   transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
@@ -750,7 +750,7 @@ $ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
     border-radius: inherit;
     background: radial-gradient(
       260px circle at var(--mx, 50%) var(--my, 0%),
-      rgba(255, 133, 0, 0.14),
+      rgba(47, 91, 255, 0.14),
       transparent 65%
     );
 
@@ -803,7 +803,7 @@ $ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
   padding: 4px 10px;
 
   border-radius: 999px;
-  background: rgba(20, 18, 16, 0.68);
+  background: rgba(15, 27, 51, 0.68);
   color: #fff;
 
   font-size: 12px;
@@ -828,7 +828,7 @@ $ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
   background: $accent;
   color: #fff;
 
-  box-shadow: 0 6px 16px rgba(255, 133, 0, 0.4);
+  box-shadow: 0 6px 16px rgba(47, 91, 255, 0.4);
 
   svg {
     transition: transform 0.25s $ease-out;
@@ -1132,7 +1132,7 @@ $ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
   height: 5px;
 
   border-radius: 50%;
-  background: #ffb45c;
+  background: #7f9bff;
 
   opacity: 0;
 }

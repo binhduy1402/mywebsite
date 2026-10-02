@@ -11,10 +11,10 @@ import { sceneWeights } from "../../../animations/scenes";
 let material: Material | null = null;
 
 const FRAME_INDEXES = {
-  "default-0": 0,
-  "default-1": 1,
-  "default-2": 2,
-  "default-3": 3,
+  "default-0": 12,
+  "default-1": 13,
+  "default-2": 14,
+  "default-3": 15,
   sleeping: 4,
   "proud-0": 12,
   "proud-1": 13,
