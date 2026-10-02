@@ -72,6 +72,10 @@ const getMaterial = (name: string): Material | null => {
   });
 };
 
+// Tint = màu đích / màu matcap-gray (matcap nhân với tint nên cần chia ngược)
+const SHIRT_TINT = new Vector3(0.5, 1.04, 3.4); // #2B52E0
+const NAVY_TINT = new Vector3(0.184, 0.345, 0.7); // #0F1B33
+
 const assignMatcap = (child: Mesh): boolean => {
   let tex: Texture | null = null;
   let tint = new Vector3(1, 1, 1);
@@ -82,6 +86,14 @@ const assignMatcap = (child: Mesh): boolean => {
   } else if (child.name === "gray") {
     tex = resources.items["matcap-gray"];
     tint = new Vector3(0.55, 0.65, 0.35);
+  } else if (child.name === "shirt") {
+    // Áo: cobalt #2B52E0
+    tex = resources.items["matcap-gray"];
+    tint = SHIRT_TINT.clone();
+  } else if (child.name === "cuff" || child.name === "shoe") {
+    // Viền cổ chân + thân giày: navy #0F1B33
+    tex = resources.items["matcap-gray"];
+    tint = NAVY_TINT.clone();
   } else if (child.name === "skin") {
     tex = resources.items["matcap-skin"];
   } else if (child.name === "white") {
@@ -131,9 +143,11 @@ const setupMesh = () => {
 
   mesh.rotation.z = 0;
 
-transform.add(mesh);
+  transform.add(mesh);
 
-scene.instance.add(transform);
+  rightHandBone = mesh.getObjectByName("bone-right-hand") as Bone;
+
+  scene.instance.add(transform);
 };
 
 const tick = () => {
@@ -176,7 +190,7 @@ export const avatar = {
   init,
   destroy,
   getMesh: () => mesh,
-  getRightHandBone: (): Bone | null => rightHandBone,
+  getRightHandBone: () => rightHandBone,
   tIdleIntensity,
   waypointsPosition,
   waypointsRotation,
