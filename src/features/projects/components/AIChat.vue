@@ -4,6 +4,61 @@ export type AIChatProps = Record<string, never>;
 import { computed, nextTick, onMounted, ref, watch } from "vue";
 import { locale } from "../../../i18n/store";
 
+const renderMessage = (text: string) => {
+  const escapeHtml = (value: string) =>
+    value
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+  let html = escapeHtml(text);
+
+  const links: string[] = [];
+
+  // Markdown: [Facebook](https://...)
+  html = html.replace(
+    /\[([^\]]+)\]\(((?:https?:\/\/|mailto:)[^)]+)\)/g,
+    (_match, _label, url) => {
+      const index = links.push(url) - 1;
+      return `@@LINK_${index}@@`;
+    },
+  );
+
+  // URL thô: https://...
+  html = html.replace(
+    /(^|[\s(])((?:https?:\/\/|www\.)[^\s<]+)(?=$|[\s).,!?;:])/g,
+    (_match, prefix, rawUrl) => {
+      const cleanUrl = rawUrl.replace(/[.,!?;:]+$/, "");
+
+      const href = cleanUrl.startsWith("www.")
+        ? `https://${cleanUrl}`
+        : cleanUrl;
+
+      const trailing = rawUrl.slice(cleanUrl.length);
+
+      return `${prefix}<a href="${href}" target="_blank" rel="noopener noreferrer">${cleanUrl}</a>${trailing}`;
+    },
+  );
+
+  // Email thô
+  html = html.replace(
+    /(^|[\s(])([A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,})(?=$|[\s).,!?;:])/gi,
+    (_match, prefix, email) =>
+      `${prefix}<a href="mailto:${email}">${email}</a>`,
+  );
+
+  // Khôi phục Markdown links
+  html = html.replace(/@@LINK_(\d+)@@/g, (_match, index) => {
+    const url = links[Number(index)];
+
+    return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+  });
+
+  return html.replace(/\n/g, "<br>");
+};
+
 type Message = {
   id: number;
   role: "user" | "bot";
@@ -172,7 +227,11 @@ watch(isLoading, (value) => {
       </header>
 
       <!-- Messages -->
-      <div ref="messagesRef" class="ai-chat-messages">
+      <div
+        ref="messagesRef"
+        class="ai-chat-messages"
+        @wheel.stop
+      >
         <div class="ai-chat-welcome" :class="{ compact: hasMessages }">
           <div class="ai-chat-orb" aria-hidden="true">
             <span class="ai-chat-orb-ring"></span>
@@ -205,9 +264,8 @@ watch(isLoading, (value) => {
           <div
             class="ai-chat-message"
             :class="`ai-chat-message--${message.role}`"
-          >
-            {{ message.text }}
-          </div>
+            v-html="renderMessage(message.text)"
+          ></div>
         </div>
 
         <div v-if="isLoading" class="ai-chat-row ai-chat-row--bot">
@@ -493,7 +551,21 @@ $chrome-btn: linear-gradient(135deg, #ffffff 0%, #bcc7d4 100%);
 
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.16) transparent;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  overscroll-behavior-y: contain;
+  touch-action: pan-y;
 }
+
+/* Keep mouse-wheel scrolling inside the chat message area. */
+.ai-chat-messages {
+  overscroll-behavior: contain;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+
 
 .ai-chat-welcome {
   width: min(620px, 100%);
@@ -712,6 +784,18 @@ $chrome-btn: linear-gradient(135deg, #ffffff 0%, #bcc7d4 100%);
 
   border-bottom-left-radius: 6px;
 }
+
+.ai-chat-message :deep(a) {
+  color: $accent;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+
+  &:hover {
+    color: $accent-2;
+  }
+}
+
 
 /* ---------- Typing ---------- */
 .ai-chat-typing {
